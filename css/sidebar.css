@@ -1,0 +1,109 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --font: "Poppins", sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+    font-family: var(--font);
+}
+body {
+    width: 100%;
+    height: 100vh;
+    /* background-color: aliceblue; */
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+}
+.mainContentHolder {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+.sidebar {
+    height: 100%;
+    display:inline-flex;
+    /* max-width: auto; */
+    /* max-width: auto; */
+    background-color: #2541e2;
+    color: white;
+    padding: 10px; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    transition: 0.1s linear;
+    width: 7rem;
+    /* box-shadow: 0px 10px 30px 5px rgb(165, 165, 165); */
+    gap: 10px;
+    overflow: none;
+    /* z-index: 1000000000000000000000000000000000000000000000; */
+}
+.hamburger {
+    font-size: 4rem;
+    cursor: pointer;
+    user-select: none;
+    padding: 5px;
+   
+}
+.sp:hover {
+    color: #2541e2;
+    background-color: rgb(255, 255, 255);
+}
+.tem {
+    font-size: 4rem;
+    user-select: none;
+}
+.ico {
+    padding: 5px;
+    align-self: center;
+    transition: 0.5s linear;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    overflow: none;
+    gap: 10px;
+    /* height: 20px; */
+    overflow: none;
+    max-height: 5%;
+}
+.sp {
+    border-radius: 5px;
+    transition: 0.1s linear;
+    cursor: pointer;
+}
+.expand {
+    width: 300px;
+    align-items: flex-start;
+}
+.whiteAf {
+    background-color: white;
+    color: #2541e2;
+}
+.ppp {
+    display: none;
+    text-align: left;
+    right: 0;
+    width: 80%;
+    /* transition: 0.5s linear; */
+    overflow: none;
+}
+
+.nonTm {
+    justify-content: center;
+}
+.tm {
+    justify-content: flex-start;
+}
