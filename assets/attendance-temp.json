@@ -1,0 +1,102 @@
+{
+  "data": [
+    {
+      "Class": "Baalvatika-3",
+      "Sheet-link": "https://docs.google.com/spreadsheets/d/1tbcluULb2BRJjNCh9fPyQu2TIEG1yranRR0lsoHOmsU/edit?gid=0#gid=0",
+      "Api-Link": "https://script.google.com/macros/s/AKfycbx3a7VI4Ox4eCQ4FYZ0z3GxLMmPGgAmphwQV7EtcxP9zOIaINt6qJEEokmnrEqSEqdM/exec"
+    },
+    {
+      "Class": "I-A",
+      "Sheet-link": "https://docs.google.com/spreadsheets/d/1PGYYgUDb8buOOfy95H8mkBtKBkmOj8NmhnYSlCuFMEQ/edit?gid=1679269171#gid=1679269171",
+      "Api-Link": "https://script.google.com/macros/s/AKfycbw6RkY4setZZw0AbI-jAVyUY3RvgE2h8YbxPtLq1CQQ_YFlcOx1ba1b6eRyc4dlg79olw/exec"
+    },
+    {
+      "Class": "I-B",
+      "Sheet-link": "https://docs.google.com/spreadsheets/d/1k0C2jImIPBYkfmTQjFAXx5nbzl7cDNW7BVz7RWJmrtU/edit?gid=446102418#gid=446102418",
+      "Api-Link": "https://script.google.com/macros/s/AKfycbyh18y7IzMdSATwSXT7bEJi74YbVudJEAjbze9dp7fn_lLuz2jmu9Djox5PmYsHphs4lQ/exec"
+    },
+    {
+      "Class": "II-A",
+      "Sheet-link": "https://docs.google.com/spreadsheets/d/1EHIGHNYqamA78C6ey6WeMUhlvvLk11UKJEIW9UWyv8M/edit?gid=670633738#gid=670633738",
+      "Api-Link": "https://script.google.com/macros/s/AKfycbwpaMdWA4cEcpd5rtPe88EzSNYRU3in9aW4qMVJvJJp6riizY-pglTd6es4zWf_3_BM/exec"
+    },
+    {
+      "Class": "II-B"
+    },
+    {
+      "Class": "III-A",
+      "Sheet-link": "https://docs.google.com/spreadsheets/d/1uLTp6W2XyaWM17-Fd2jrgRP9E_3mL_X67L_2i_0Ux-I/edit?gid=1865571850#gid=1865571850",
+      "Api-Link": "https://script.google.com/macros/s/AKfycbz7OJTz7v5i-GwqScsbu0baF_tGeBhAUPynfiRKsWj08epLKuzOSsyvlkd_rQZs-gLU/exec"
+    },
+    {
+      "Class": "III-B"
+    },
+    {
+      "Class": "IV-A",
+      "Sheet-link": "https://docs.google.com/spreadsheets/d/1DAiq4vs2imFAPdcc4XA7SXX0uQVjzxDhom1WP4htOi4/edit?usp=sharing",
+      "Api-Link": "https://script.google.com/macros/s/AKfycbz1SplqmDwcGQZOSWmo46xck9AqboTVOcn6RdAaqN-unrddEEdaJjad03Iq9t37iToqyQ/exec"
+    },
+    {
+      "Class": "IV-B"
+    },
+    {
+      "Class": "V-A",
+      "Sheet-link": "https://docs.google.com/spreadsheets/d/1uTYljobuvv6T9k_or6p6ANMIXg84eX5uF6TnI-2q5Q0/edit?gid=1288607548#gid=1288607548",
+      "Api-Link": "https://script.google.com/macros/s/AKfycbxc-V7YIlHXbP_zNBsCacoLaNJMkYwh92AJNJmncNIVuE7iBOm0iJ_kLXhcSbJaJjF7Iw/exec"
+    },
+    {
+      "Class": "V-B"
+    },
+    {
+      "Class": "VI-A",
+      "Sheet-link": "https://docs.google.com/spreadsheets/d/1AjV-lfJIjgr9EI9Tlrw-SDrN0lAFWsH3LF0WJSW3-5Y/edit?usp=sharing",
+      "Api-Link": "https://script.google.com/macros/s/AKfycbxS7XJyGBTtfoxu4jvjCkEWcjLedhIWwrL-6kCHo9UpUQrutIdrrkj_x7SpC-zrSLQ/exec"
+    },
+    {
+      "Class": "VI-B"
+    },
+    {
+      "Class": "VII-A"
+    },
+    {
+      "Class": "VII-B"
+    },
+    {
+      "Class": "VIII-A",
+      "Sheet-link": "https://docs.google.com/spreadsheets/d/1Rzdn6HSkFoLJ9c854bocoW1_WRKHK43AIm9u3g-TbQA/edit?usp=sharing",
+      "Api-Link": "https://script.google.com/macros/s/AKfycby3d5-QvaSeBE6QjYTrvMRR3ip_XWh57rfuO_LO8vARnOIUYLGnlP-Q1w-3A5WmmPyN/exec"
+    },
+    {
+      "Class": "VIII-B"
+    },
+    {
+      "Class": "IX-A"
+    },
+    {
+      "Class": "IX-B"
+    },
+    {
+      "Class": "X-A"
+    },
+    {
+      "Class": "X-B"
+    },
+    {
+      "Class": "XI-SCIENCE",
+      "Sheet-link": "https://docs.google.com/spreadsheets/d/1F-jS6xYj8O6XxpONbIWmsBuRY2B5dOILJ-BayL0DYVk/edit?gid=184318363#gid=184318363",
+      "Api-Link": "https://script.google.com/macros/s/AKfycbwalNENy13AwG3rm4Dsyfitv_Ma1SQmpYnQyCOpTi14qC3ndszYnrNvBAhBvsIK-PHnQw/exec"
+    },
+    {
+      "Class": "XI-HUMANITIES",
+      "Sheet-link": "https://docs.google.com/spreadsheets/d/1f6QyNZzlcvwNgq9SQAGQkF2_C7frmgBOZ1pKXJSb7p8/edit?usp=sharing",
+      "Api-Link": "https://script.google.com/macros/s/AKfycbxWChxz-BWwszf4Z_9tLjiNBLIya4lnf3oissaTBEANnuL3RdT2zGNR35b8J_2-GhqK/exec"
+    },
+    {
+      "Class": "XII-SCIENCE"
+    },
+    {
+      "Class": "XII-HUMANITIES",
+      "Sheet-link": "https://docs.google.com/spreadsheets/d/1wc-rZO0tGWUKbwhRANPKPbzc8YXULZqoEIrks5-wTRQ/edit?usp=sharing"
+    }
+  ]
+}
