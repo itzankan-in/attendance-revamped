@@ -88,7 +88,7 @@ body {
     width: 300px;
     align-items: flex-start;
 }
-.whiteAf {
+.selected {
     background-color: white;
     color: #2541e2;
 }
