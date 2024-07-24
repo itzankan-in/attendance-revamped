@@ -7,6 +7,8 @@
     /* padding: 20px; */
     margin-left: 7rem;
     background-color: rgb(157, 207, 253);
+    min-height: 100vh;
+    max-height: auto;
 }
 .htwo {
     font-size: 2.5vw;
@@ -222,7 +224,7 @@
         transform: scale(100%);
         opacity: 100%;
     }
-    15% {
+    25% {
         opacity: 0;
         transform: scale(50%);
     }
@@ -230,7 +232,7 @@
         opacity: 100;
         transform: scale(20%);
     }
-    65% {
+    75% {
         opacity: 0;
         transform: scale(50%);
     }

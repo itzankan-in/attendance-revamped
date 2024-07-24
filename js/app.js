@@ -5,6 +5,7 @@ let ppp = Array.from(document.getElementsByClassName("ppp"))
 let i =0;
 let icons = []
 let globalLinkerJson = {}
+let loaderSX = document.querySelector(".loader")
 
 
   icoArr.forEach((e,i) => {
@@ -112,8 +113,8 @@ function home() {
   let list = document.getElementById("slist")
   list.addEventListener("click",() => {cPackage.innerHTML=""})
   homeBtn.addEventListener("click", home)
-// const linkerApi = "https://script.googleusercontent.com/macros/echo?user_content_key=dc1UIeuQq5Rh2MJIyqKYKeh7lt8FeCBk5NWf7Gw2tLpifS18VNiNmdHzIfMC6V48YLnBkWlBa2Gvj-VeYxQhV6ZZLmbW9eSHm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnDlniuB6BzbDp61c13OlwDOApdtF1d4JVv5l5l-Ayvjqyqe2O4UPftU9yHWhXybooUFkTc3tk2K2ZzIOrT5uVeb-Jw6OUZ2ofNz9Jw9Md8uu&lib=MBFcEblXAe2kpuCHxlSDrXtoC2E5UiZmu"
-const linkerApi = "https://raw.githubusercontent.com/itzankan-in/attendance-revamped/master/assets/attendance-temp.json"
+const linkerApi = "https://script.googleusercontent.com/macros/echo?user_content_key=dc1UIeuQq5Rh2MJIyqKYKeh7lt8FeCBk5NWf7Gw2tLpifS18VNiNmdHzIfMC6V48YLnBkWlBa2Gvj-VeYxQhV6ZZLmbW9eSHm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnDlniuB6BzbDp61c13OlwDOApdtF1d4JVv5l5l-Ayvjqyqe2O4UPftU9yHWhXybooUFkTc3tk2K2ZzIOrT5uVeb-Jw6OUZ2ofNz9Jw9Md8uu&lib=MBFcEblXAe2kpuCHxlSDrXtoC2E5UiZmu"
+// const linkerApi = "https://raw.githubusercontent.com/itzankan-in/attendance-revamped/master/assets/attendance-temp.json"
 
 
 
@@ -139,8 +140,10 @@ let chartCode2 = `  <div class="sListHolder">
 //dropdown function
 
 function loader(ddcontent,ddbtn) {
-  
+ loaderSX.style.display = "flex"
  fetch(linkerApi).then(e=>e.json()).then(e => {
+ loaderSX.style.display = "none"
+
   globalLinkerJson = e;
   let applePie = e['data']
   applePie.forEach(e => {
@@ -182,8 +185,7 @@ f.innerHTML = e;
 
 function tableRender(__class__) {
   let status;
- let loader = document.querySelector(".loader")
- loader.style.display = "flex"
+ 
  let localApi = ""
  globalLinkerJson['data'].forEach(e => {
   if(e['Class'] == __class__) {
@@ -194,13 +196,33 @@ function tableRender(__class__) {
     } else {
     localApi = e["Api-Link"]
       status = true
+      loaderSX.style.display = "flex"
     }
   }
 })
 if(localApi != null) {
     fetch(localApi).then(e=>e.json()).then(e=>{
-      loader.style.display = "none"
+      loaderSX.style.display = "none"
+      
+      e['data'].forEach((f , i) => {
+        if(f.Name.toLowerCase() === "absent"||f.Name.toLowerCase() === "present"||f.Name.toLowerCase() === "total"){}
+        else { let tr = document.createElement("div")
+        tr.setAttribute("class","tr")
+        let index = 0;
+        for(k in f) {
+          if(index<3) {
+          let td = document.createElement("div")
+          td.setAttribute(`class`,`td td${(i%2)==1? 0 : 1}`);
+          td.innerHTML = f[k];
+          tr.appendChild(td)
+          index++
+          }
+        }
+        document.querySelector(".mainTable").appendChild(tr)
+    }})
+    
   })
+
 }
 return status
 
