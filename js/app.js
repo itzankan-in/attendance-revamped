@@ -113,8 +113,8 @@ function home() {
   let list = document.getElementById("slist")
   list.addEventListener("click",() => {cPackage.innerHTML=""})
   homeBtn.addEventListener("click", home)
-const linkerApi = "https://script.googleusercontent.com/macros/echo?user_content_key=dc1UIeuQq5Rh2MJIyqKYKeh7lt8FeCBk5NWf7Gw2tLpifS18VNiNmdHzIfMC6V48YLnBkWlBa2Gvj-VeYxQhV6ZZLmbW9eSHm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnDlniuB6BzbDp61c13OlwDOApdtF1d4JVv5l5l-Ayvjqyqe2O4UPftU9yHWhXybooUFkTc3tk2K2ZzIOrT5uVeb-Jw6OUZ2ofNz9Jw9Md8uu&lib=MBFcEblXAe2kpuCHxlSDrXtoC2E5UiZmu"
-// const linkerApi = "https://raw.githubusercontent.com/itzankan-in/attendance-revamped/master/assets/attendance-temp.json"
+// const linkerApi = "https://script.googleusercontent.com/macros/echo?user_content_key=dc1UIeuQq5Rh2MJIyqKYKeh7lt8FeCBk5NWf7Gw2tLpifS18VNiNmdHzIfMC6V48YLnBkWlBa2Gvj-VeYxQhV6ZZLmbW9eSHm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnDlniuB6BzbDp61c13OlwDOApdtF1d4JVv5l5l-Ayvjqyqe2O4UPftU9yHWhXybooUFkTc3tk2K2ZzIOrT5uVeb-Jw6OUZ2ofNz9Jw9Md8uu&lib=MBFcEblXAe2kpuCHxlSDrXtoC2E5UiZmu"
+const linkerApi = "https://raw.githubusercontent.com/itzankan-in/attendance-revamped/master/assets/attendance-temp.json"
 
 
 
@@ -139,7 +139,7 @@ let chartCode2 = `  <div class="sListHolder">
 
 //dropdown function
 
-function loader(ddcontent,ddbtn) {
+function loader(ddcontent,ddbtn,element) {
  loaderSX.style.display = "flex"
  fetch(linkerApi).then(e=>e.json()).then(e => {
  loaderSX.style.display = "none"
@@ -152,14 +152,18 @@ function loader(ddcontent,ddbtn) {
     a.setAttribute("class", "chiggo")
     ddcontent.appendChild(a)
   })
-  let aArr = Array.from(document.getElementsByClassName("chiggo"))
-  aArr.forEach(e => {
-    e.addEventListener("click", () => {
-      listRender(e.innerHTML,ddbtn)
-    })
-  })
+  if(element.id === "slist") {
+      let aArr = Array.from(document.getElementsByClassName("chiggo"))
+          aArr.forEach(e => {
+            e.addEventListener("click", () => {
+              listRender(e.innerHTML,ddbtn)
+              })
+  }
+)
+ } 
  })
- 
+
+
 
 }
 
@@ -235,7 +239,17 @@ return status
 let sList = document.querySelector("#slist")
 sList.addEventListener("click", () => {
   if(sList.classList.contains("selected")) {
-    listLoader()
+    listLoader(sList)
+  } else {
+    home()
+    
+  }
+  
+})
+let adata = document.querySelector("#adata")
+adata.addEventListener("click", () => {
+  if(adata.classList.contains("selected")) {
+    listLoader(adata)
   } else {
     home()
     
@@ -243,7 +257,7 @@ sList.addEventListener("click", () => {
   
 })
 
-function listLoader() {
+function listLoader(x) {
   cPackage.innerHTML = chartCode2
   
     const dropbtn = document.querySelector(".dropbtn");
@@ -260,7 +274,7 @@ function listLoader() {
         }
     });
 
-  loader(dropdownContent,dropbtn)
+  loader(dropdownContent,dropbtn,x)
 
 
  
