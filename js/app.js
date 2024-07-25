@@ -113,8 +113,8 @@ function home() {
   let list = document.getElementById("slist")
   list.addEventListener("click",() => {cPackage.innerHTML=""})
   homeBtn.addEventListener("click", home)
-// const linkerApi = "https://script.googleusercontent.com/macros/echo?user_content_key=dc1UIeuQq5Rh2MJIyqKYKeh7lt8FeCBk5NWf7Gw2tLpifS18VNiNmdHzIfMC6V48YLnBkWlBa2Gvj-VeYxQhV6ZZLmbW9eSHm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnDlniuB6BzbDp61c13OlwDOApdtF1d4JVv5l5l-Ayvjqyqe2O4UPftU9yHWhXybooUFkTc3tk2K2ZzIOrT5uVeb-Jw6OUZ2ofNz9Jw9Md8uu&lib=MBFcEblXAe2kpuCHxlSDrXtoC2E5UiZmu"
-const linkerApi = "https://raw.githubusercontent.com/itzankan-in/attendance-revamped/master/assets/attendance-temp.json"
+const linkerApi = "https://script.googleusercontent.com/macros/echo?user_content_key=dc1UIeuQq5Rh2MJIyqKYKeh7lt8FeCBk5NWf7Gw2tLpifS18VNiNmdHzIfMC6V48YLnBkWlBa2Gvj-VeYxQhV6ZZLmbW9eSHm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnDlniuB6BzbDp61c13OlwDOApdtF1d4JVv5l5l-Ayvjqyqe2O4UPftU9yHWhXybooUFkTc3tk2K2ZzIOrT5uVeb-Jw6OUZ2ofNz9Jw9Md8uu&lib=MBFcEblXAe2kpuCHxlSDrXtoC2E5UiZmu"
+// const linkerApi = "https://raw.githubusercontent.com/itzankan-in/attendance-revamped/master/assets/attendance-temp.json"
 
 
 
@@ -160,9 +160,103 @@ function loader(ddcontent,ddbtn,element) {
               })
   }
 )
- } 
+ } else if(element.id === "adata") {
+  let aArr = Array.from(document.getElementsByClassName("chiggo"))
+  aArr.forEach(e => {
+    e.addEventListener("click", () => {
+      adataRender(e.innerHTML,ddbtn)
+      })
+}
+)
+ }
  })
+}
+function adataRender(__class__,f) {
+  let sListHolder = document.querySelector(".tempura")
 
+  let status;
+ 
+  let localApi = ""
+  globalLinkerJson['data'].forEach(e => {
+   if(e['Class'] == __class__) {
+     if(e["Api-Link"] == undefined) {
+       alert("The data for this class have not been added yet")
+       localApi = null;
+       status = false
+     } else {
+     localApi = e["Api-Link"]
+       status = true
+       loaderSX.style.display = "flex"
+     }
+   }
+ })
+ if(status) {
+  
+
+  sListHolder.innerHTML = ` <div class="hone"> Showing attendance data for ${__class__}</div>
+            <div class="mainTable mainTable-special" style="">
+                <div class="tr tr-0 tr-special">
+                </div> 
+  </div>
+`
+  
+f.innerHTML = __class__;
+  } else { sListHolder.innerHTML = "Oops Cant find the  data you requested!" }
+  let index = 0;
+  let mainTable = document.querySelector(".mainTable")
+  let tr0 = document.querySelector(".tr-0")
+  if(localApi != null) {
+     fetch(localApi).then(e=>e.json()).then(e=>{
+       loaderSX.style.display = "none"
+       let pseudoIndex = 0;
+       if(index === 0) {
+        for(let i in e['data'][0]) {
+            let th = document.createElement("div")
+            if(pseudoIndex<3) {
+            th.setAttribute("class","th th-special th-special-1")
+            pseudoIndex++
+            } else {
+            th.setAttribute("class","th th-special")
+
+            }
+            th.innerHTML = i
+            tr0.appendChild(th)
+            index++
+        } 
+      }
+        
+        for(let i = 0; i<e['data'].length; i++ ) {
+          let tr = document.createElement("div")
+          tr.setAttribute("class","tr")
+          let pseudoIndex2 = 0; 
+           
+          for(let j in e['data'][i]) {
+            let td = document.createElement("div")
+            if(pseudoIndex2<3) {
+              td.setAttribute("class", `td td${i%2} td-special td-special-1`)
+              pseudoIndex2++
+            } else {
+              td.setAttribute("class", `td td${i%2} td-special`)
+              if(j.toLowerCase() != "total"|| j.toLowerCase() != "absent"|| j.toLowerCase() != "present") {
+              td.addEventListener("click", () => {
+                alert(`The data you have clicked on is of ${e['data'][i]['Name']}, Roll Number :-  ${e['data'][i]['Roll-No']} of Class :- ${__class__}`)
+              
+              }) 
+              } else {
+                alert(`The data you have clicked on is of ${e['data'][i]['Name']} of Class :- ${__class__}`)
+
+              }
+            }
+            td.innerHTML = e['data'][i][j]
+            tr.appendChild(td)
+          }
+          mainTable.appendChild(tr)
+        }
+      
+      
+    })
+ }  
+   
 
 
 }

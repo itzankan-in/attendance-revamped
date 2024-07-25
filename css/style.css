@@ -3,6 +3,9 @@
     user-select: none;
 
 }
+body {
+    /* overflow: hidden; */
+}
 .mainContentHolder {
     /* padding: 20px; */
     margin-left: 7rem;
@@ -286,4 +289,51 @@
 .dropdown-item a:hover {
     background-color: #2541e2;
     color: white;
+}
+.tempura {
+    width: auto;
+    height: auto;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+.mainTable {
+    /* justify-content: flex-start; */
+    align-items: flex-start;
+}
+.th-special {
+    display: flex;
+    min-width: 15rem;
+    max-width: auto;
+    
+}
+.th-special-1 {
+    min-width: 35rem;
+}
+.td-special {
+    display: flex;
+    min-width: 15rem;
+    max-width: auto;
+    
+}
+.td-special-1 {
+    min-width: 35rem;
+}
+
+
+
+.mainTable-special {
+    overflow: scroll;
+    overflow-y: scroll;
+    max-height: auto;
+    
+}
+.mainTable::-webkit-scrollbar {
+    /* display: none; */
+    background: transparent;
+}
+.mainTable::-webkit-scrollbar-thumb {
+    background-color: #516bff;
+    border-radius: 10px;
+    border: 1px black solid;
 }
