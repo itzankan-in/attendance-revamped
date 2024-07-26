@@ -169,7 +169,44 @@ function loader(ddcontent,ddbtn,element) {
 }
 )
  }
+  else if(element.id === "pdata") {
+  let aArr = Array.from(document.getElementsByClassName("chiggo"))
+  aArr.forEach(e => {
+    e.addEventListener("click", () => {
+      pdataRender(e.innerHTML,ddbtn)
+
+      })
+}
+)
+ }
  })
+}
+function pdataRender(__class__,f) {
+  let sListHolder = document.querySelector(".tempura")
+
+  let status;
+ 
+  let localApi = ""
+  globalLinkerJson['data'].forEach(e => {
+   if(e['Class'] == __class__) {
+     if(e["Api-Link"] == undefined) {
+       alert("The data for this class have not been added yet")
+       localApi = null;
+       status = false
+     } else {
+     localApi = e["Api-Link"]
+       status = true
+       loaderSX.style.display = "flex"
+     }
+   }
+ })
+ if(status) {
+  
+f.innerHTML = __class__;
+  } else { sListHolder.innerHTML = "Oops Cant find the  data you requested!" }
+  let index = 0;
+ 
+
 }
 function adataRender(__class__,f) {
   let sListHolder = document.querySelector(".tempura")
@@ -350,6 +387,16 @@ adata.addEventListener("click", () => {
   }
   
 })
+let pdata = document.querySelector("#pdata")
+pdata.addEventListener("click", () => {
+  if(pdata.classList.contains("selected")) {
+    listLoader(pdata)
+  } else {
+    home()
+    
+  }
+  
+})
 
 function listLoader(x) {
   cPackage.innerHTML = chartCode2
@@ -375,4 +422,8 @@ function listLoader(x) {
 
   
 }
+
+
+
+
 

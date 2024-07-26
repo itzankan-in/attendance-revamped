@@ -39,6 +39,9 @@ body {
     color: white;
     padding: 10px; 
     position: fixed;
+    opacity: 0;
+    /* align-self: flex-start; */
+    /* height: ; */
     top: 0;
     left: 0;
     flex-direction: column;
@@ -57,6 +60,9 @@ body {
     user-select: none;
     padding: 5px;
    
+}
+.sidebar:hover {
+    opacity: 100;
 }
 .sp:hover {
     color: #2541e2;

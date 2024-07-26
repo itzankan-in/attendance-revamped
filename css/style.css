@@ -2,16 +2,26 @@
     font-size:3vw;
     user-select: none;
 
-}
+ }
 body {
     /* overflow: hidden; */
+    /* height: 100vh; */
+    /* width: 100vw; */
+    display: flex;
+    /* height: 100vh; */
+    
 }
 .mainContentHolder {
     /* padding: 20px; */
-    margin-left: 7rem;
+    /* margin-left: 7rem; */
+    /* position: absolute; */
+    /* transform: translateX(3%); */
     background-color: rgb(157, 207, 253);
     min-height: 100vh;
     max-height: auto;
+    /* width: 90%; */
+    align-self: flex-end;
+    transform-origin: left;
 }
 .htwo {
     font-size: 2.5vw;
@@ -71,10 +81,10 @@ body {
 .cPakage {
     width: 100%;
     /* background-color: red; */
-    padding: 1rem 1rem 1rem 3rem;
+    /* padding: 1rem 1rem 1rem 3rem; */
     height: auto;
     /* display: inline-flex; */
-    --x: 2rem;
+    /* --x: 2rem; */
     margin-top: 3vh;
     /* background-color: red; */
     display: flex;
@@ -86,6 +96,8 @@ body {
     padding: 10px;
     border-radius: 20px;
     box-shadow: 4px 4px 10px 1px rgba(128, 128, 128, 0.61);
+    margin-left: 3rem;
+    margin-right: 3rem;
 }
 .hThree {
     font-size: 2vw;
