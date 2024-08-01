@@ -108,8 +108,9 @@ let charCode1 = `   <div class="carD">
 function home() {
   cPackage.innerHTML = charCode1
 }
-  home();
-  let homeBtn = document.getElementById("home")
+home();
+
+let homeBtn = document.getElementById("home")
   let list = document.getElementById("slist")
   list.addEventListener("click",() => {cPackage.innerHTML=""})
   homeBtn.addEventListener("click", home)
@@ -182,7 +183,7 @@ function loader(ddcontent,ddbtn,element) {
  })
 }
 function pdataRender(__class__,f) {
-  let sListHolder = document.querySelector(".tempura")
+  let sListHolder = document.querySelector(".tempura1")
 
   let status;
  
@@ -199,6 +200,20 @@ function pdataRender(__class__,f) {
        loaderSX.style.display = "flex"
      }
    }
+   fetch(localApi).then(e => e.json()).then(e => {
+    loaderSX.style.display = 'none';
+    e["data"].forEach(e => {
+      if(e['Name'].toLowerCase() == 'present' || e['Name'].toLowerCase() == 'absent'|| e['Name'].toLowerCase() == 'total'){}
+      else {
+       stuDentCard = document.createElement("div")
+      stuDentCard.classList.add("profile-card")
+      stuDentCard.innerHTML = `<i class="material-icons tem" title="${e.Name}">person</i> 
+      <div class="studentCon>${e['Roll-No']}. ${e['Name']}</div>`
+        
+      }
+      sListHolder.appendChild(stuDentCard)
+    })
+   })
  })
  if(status) {
   
@@ -274,17 +289,13 @@ f.innerHTML = __class__;
               pseudoIndex2++
             } else {
               td.setAttribute("class", `td td${i%2} td-special`)
-              if(j.toLowerCase() != "total"|| j.toLowerCase() != "absent"|| j.toLowerCase() != "present") {
-              td.addEventListener("click", () => {
-                alert(`The data you have clicked on is of ${e['data'][i]['Name']}, Roll Number :-  ${e['data'][i]['Roll-No']} of Class :- ${__class__}`)
               
-              }) 
-              } else {
-                alert(`The data you have clicked on is of ${e['data'][i]['Name']} of Class :- ${__class__}`)
-
-              }
             }
-            td.innerHTML = e['data'][i][j]
+            if(i < e.length -3 && e['data'][i][j] == 0 || i < e.length -3 && e['data'][i][j] == 1 ) {
+            td.innerHTML = e['data'][i] == 0 ? "A" : "P"
+          } else if(i < e.length -3 && e['data'][i][j].toLowerCase() == "p" || i < e.length -3 && e['data'][i][j].toLowerCase() == "a" ) {
+          td.innerHTML = e['data'][i][j]
+        }
             tr.appendChild(td)
           }
           mainTable.appendChild(tr)
@@ -325,7 +336,7 @@ function tableRender(__class__) {
  globalLinkerJson['data'].forEach(e => {
   if(e['Class'] == __class__) {
     if(e["Api-Link"] == undefined) {
-      alert("The data for this class have not been added yet")
+      alert("The data for this class have not been added yet") 
       localApi = null;
       status = false
     } else {
@@ -390,7 +401,7 @@ adata.addEventListener("click", () => {
 let pdata = document.querySelector("#pdata")
 pdata.addEventListener("click", () => {
   if(pdata.classList.contains("selected")) {
-    listLoader(pdata)
+    listLoader(pdata,true)
   } else {
     home()
     
@@ -398,9 +409,19 @@ pdata.addEventListener("click", () => {
   
 })
 
-function listLoader(x) {
+function listLoader(x, e=null) {
+  if(e) {
+  cPackage.innerHTML = `<div class="sListHolder">
+            <div class="dropdown">
+                <button class="dropbtn">Choose Class</button>
+                <div class="dropdown-content">
+                </div>
+              <div class="tempura1"></div>
+            </div>`
+} else {
   cPackage.innerHTML = chartCode2
-  
+
+}
     const dropbtn = document.querySelector(".dropbtn");
     const dropdownContent = document.querySelector(".dropdown-content");
     dropbtn.addEventListener("click", function() {

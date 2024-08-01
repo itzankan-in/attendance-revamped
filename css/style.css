@@ -309,6 +309,32 @@ body {
     /* align-items: center; */
     /* justify-content: center; */
 }
+.tempura1 {
+    height: auto;
+    width: 90%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+.profile-card {
+    width: 33%;
+    height: 3rem;
+    display: flex;
+    background-color: #516bff;
+    user-select: none;
+    cursor: pointer;
+    flex-direction: row;
+    transition: 0.2s linear;
+    justify-content: space-between;
+}
+.profile-card:hover {
+    transform: translateY(-10%);
+    box-shadow: 0px 10px 10px 5px gray;
+}
+.studentCon {
+    display: flex;
+    width: 50%;
+    font-size: 0.8em;
+}
 .mainTable {
     /* justify-content: flex-start; */
     align-items: flex-start;
