@@ -175,8 +175,10 @@ function loader(ddcontent,ddbtn,element) {
   aArr.forEach(e => {
     e.addEventListener("click", () => {
       pdataRender(e.innerHTML,ddbtn)
+    })
+      
 
-      })
+      
 }
 )
  }
@@ -200,20 +202,32 @@ function pdataRender(__class__,f) {
        loaderSX.style.display = "flex"
      }
    }
-   fetch(localApi).then(e => e.json()).then(e => {
-    loaderSX.style.display = 'none';
-    e["data"].forEach(e => {
-      if(e['Name'].toLowerCase() == 'present' || e['Name'].toLowerCase() == 'absent'|| e['Name'].toLowerCase() == 'total'){}
-      else {
-       stuDentCard = document.createElement("div")
-      stuDentCard.classList.add("profile-card")
-      stuDentCard.innerHTML = `<i class="material-icons tem" title="${e.Name}">person</i> 
-      <div class="studentCon>${e['Roll-No']}. ${e['Name']}</div>`
-        
-      }
-      sListHolder.appendChild(stuDentCard)
-    })
-   })
+ })
+ fetch(localApi).then(e => e.json()).then(e => {
+  sListHolder.innerHTML = ""
+
+  loaderSX.style.display = 'none';
+  console.log(e['data'].length)
+  e["data"].forEach((f,index) => {
+    // console.log(f)
+   if(index<(e['data'].length - 3)) {
+    let stuDentCard = document.createElement("div")
+    stuDentCard.classList.add("profile-card")
+    stuDentCard.addEventListener("click", () => { popupRender(e['data'][index],localApi,__class__)} )
+    let ij = document.createElement("i")
+    ij.setAttribute("class","material-icons tem")
+    ij.setAttribute("title",f.Name)
+    ij.innerHTML = "person"
+    let stdCon = document.createElement("div")
+    stdCon.setAttribute("class","stdCon")
+    stdCon.setAttribute("title",f.Name)
+    stdCon.innerHTML = `${f["Roll-No"]}. ${f.Name}`
+    stuDentCard.appendChild(ij)
+    stuDentCard.appendChild(stdCon)
+    sListHolder.appendChild(stuDentCard)
+    
+   }
+  })
  })
  if(status) {
   
@@ -221,6 +235,10 @@ f.innerHTML = __class__;
   } else { sListHolder.innerHTML = "Oops Cant find the  data you requested!" }
   let index = 0;
  
+
+}
+function popupRender(studentIndex,api,_class_) {
+  console.log(studentIndex, api , _class_)
 
 }
 function adataRender(__class__,f) {
@@ -251,60 +269,61 @@ function adataRender(__class__,f) {
                 </div> 
   </div>
 `
-  
-f.innerHTML = __class__;
-  } else { sListHolder.innerHTML = "Oops Cant find the  data you requested!" }
-  let index = 0;
-  let mainTable = document.querySelector(".mainTable")
-  let tr0 = document.querySelector(".tr-0")
-  if(localApi != null) {
-     fetch(localApi).then(e=>e.json()).then(e=>{
-       loaderSX.style.display = "none"
-       let pseudoIndex = 0;
-       if(index === 0) {
-        for(let i in e['data'][0]) {
-            let th = document.createElement("div")
-            if(pseudoIndex<3) {
-            th.setAttribute("class","th th-special th-special-1")
-            pseudoIndex++
-            } else {
-            th.setAttribute("class","th th-special")
+let index = 0;
+let mainTable = document.querySelector(".mainTable")
+let tr0 = document.querySelector(".tr-0")
+if(localApi != null) {
+   fetch(localApi).then(e=>e.json()).then(e=>{
+     loaderSX.style.display = "none"
+     let pseudoIndex = 0;
+     if(index === 0) {
+      for(let i in e['data'][0]) {
+          let th = document.createElement("div")
+          if(pseudoIndex<3) {
+          th.setAttribute("class","th th-special th-special-1")
+          pseudoIndex++
+          } else {
+          th.setAttribute("class","th th-special")
 
-            }
-            th.innerHTML = i
-            tr0.appendChild(th)
-            index++
-        } 
-      }
-        
-        for(let i = 0; i<e['data'].length; i++ ) {
-          let tr = document.createElement("div")
-          tr.setAttribute("class","tr")
-          let pseudoIndex2 = 0; 
-           
-          for(let j in e['data'][i]) {
-            let td = document.createElement("div")
-            if(pseudoIndex2<3) {
-              td.setAttribute("class", `td td${i%2} td-special td-special-1`)
-              pseudoIndex2++
-            } else {
-              td.setAttribute("class", `td td${i%2} td-special`)
-              
-            }
-            if(i < e.length -3 && e['data'][i][j] == 0 || i < e.length -3 && e['data'][i][j] == 1 ) {
-            td.innerHTML = e['data'][i] == 0 ? "A" : "P"
-          } else if(i < e.length -3 && e['data'][i][j].toLowerCase() == "p" || i < e.length -3 && e['data'][i][j].toLowerCase() == "a" ) {
-          td.innerHTML = e['data'][i][j]
-        }
-            tr.appendChild(td)
           }
-          mainTable.appendChild(tr)
+          th.innerHTML = i
+          tr0.appendChild(th)
+          index++
+      } 
+    }
+      
+      for(let i = 0; i<e['data'].length; i++ ) {
+        let tr = document.createElement("div")
+        tr.setAttribute("class","tr")
+        let pseudoIndex2 = 0; 
+         
+        for(let j in e['data'][i]) {
+          let td = document.createElement("div")
+          if(pseudoIndex2<3) {
+            td.setAttribute("class", `td td${i%2} td-special td-special-1`)
+            pseudoIndex2++
+            td.innerHTML = e['data'][i][j]
+          } else {
+            td.setAttribute("class", `td td${i%2} td-special`)
+              td.innerHTML = e['data'][i][j] == 0 ? "A" : e['data'][i][j] === "A"? "A": 'P'; 
+           
+            
+          
+          }
+          
+          tr.appendChild(td)
         }
-      
-      
-    })
- }  
-   
+        mainTable.appendChild(tr)
+      }
+    
+    
+  })
+}  
+ 
+f.innerHTML = __class__;
+
+  } else { sListHolder.innerHTML = "Oops Cant find the  data you requested!" }
+  
 
 
 }
@@ -417,6 +436,7 @@ function listLoader(x, e=null) {
                 <div class="dropdown-content">
                 </div>
               <div class="tempura1"></div>
+
             </div>`
 } else {
   cPackage.innerHTML = chartCode2
