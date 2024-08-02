@@ -297,8 +297,8 @@ function popupRender(studentIndex,api,_class_) {
                 </div> 
     </div>
   `
-  let tr0 = document.querySelector("tr0")
-  let ittrCount = 0;
+  /* let tr0 = document.querySelector("tr0")
+  le ittrCount = 0;
   for(k in studentIndex) {
     ittrCount++
     if(ittr>2) {
@@ -306,6 +306,7 @@ function popupRender(studentIndex,api,_class_) {
       thS.setAttributetgggbgb
     }
   }
+  */
 function drawChart() {
   const data = google.visualization.arrayToDataTable([
     ['Present', 'Percentage'],
