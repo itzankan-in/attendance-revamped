@@ -207,7 +207,7 @@ function pdataRender(__class__,f) {
   sListHolder.innerHTML = ""
 
   loaderSX.style.display = 'none';
-  console.log(e['data'].length)
+  // console.log(e['data'].length)
   e["data"].forEach((f,index) => {
     // console.log(f)
    if(index<(e['data'].length - 3)) {
@@ -239,7 +239,98 @@ f.innerHTML = __class__;
 }
 function popupRender(studentIndex,api,_class_) {
   console.log(studentIndex, api , _class_)
+  let popupCover = document.createElement("div")
+  popupCover.classList.add("popUp-cover")
+  let popup = document.createElement("div")
+  popup.classList.add("popUP")
+  let totalWorkinDay = 0;
+  let presentDays = 0;
+  for(i in studentIndex) {
+    totalWorkinDay+=1;
+    if(studentIndex[i] == "P" || studentIndex[i] == "p") {
+      presentDays+=1
+    }
+    console.log(studentIndex[i])
+  }
+  let buffer = ''
+  if(_class_.slice(-7).toUpperCase() === "SCIENCE") {
+    buffer = "Science"
+  } else if (_class_.slice(-10).toUpperCase() === "HUMANITIES") {
+    buffer = "Humanities"
+  } else {
+    buffer = _class_.slice(-1)
+  }
+  let buffer2 = ''
+  if(_class_.slice(-7).toUpperCase() === "SCIENCE" || _class_.slice(-10).toUpperCase() === "HUMANITIES") {
+    buffer2 = _class_
+  } else {
+    buffer2 = _class_.slice(0,-2)
+  }
+  let percentage = (((presentDays)/(totalWorkinDay-3)) * 100).toFixed(1)
 
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+
+  popup.innerHTML = `<div class="upNameHolder"><h1 class="hOne">${studentIndex['Roll-No']}. ${studentIndex.Name}</h1><i class="material-icons mx">clear</i></div>
+    <div class="statsHolder"> 
+      <div class="nameHolder">
+                <div class="titleUp">Class: <div class="titleValue">${buffer2}</div></div>
+                <div class="titleUp">Section: <div class="titleValue">${buffer}</div></div>
+                <div class="titleUp">Roll No: <div class="titleValue">${studentIndex['Roll-No']}</div></div>
+                <div class="titleUp">Total school days: <div class="titleValue">${totalWorkinDay-3}</div></div>
+                <div class="titleUp">Total days present: <div class="titleValue">${presentDays}</div></div>
+                <div class="titleUp">Total days absent: <div class="titleValue">${totalWorkinDay-3-presentDays}</div></div>
+                <div class="titleUp">Percentage:  <div class="titleValue">${percentage} %</div></div>
+
+    </div>
+    <div class="graphHolder">
+    <div id="myChart" style="max-width:700px; height:400px"></div>
+
+    </div>
+    </div>
+    <div class="mainTable">
+      <div class="tr tr-0">
+                    <div class="th roll">Roll Number</div>
+                    <div class="th admn">Admission number</div>
+                    <div class="th name">Name</div>
+                </div> 
+    </div>
+  `
+  let tr0 = document.querySelector("tr0")
+  let ittrCount = 0;
+  for(k in studentIndex) {
+    ittrCount++
+    if(ittr>2) {
+      let thS = document.createElement("div")
+      thS.setAttributetgggbgb
+    }
+  }
+function drawChart() {
+  const data = google.visualization.arrayToDataTable([
+    ['Present', 'Percentage'],
+    ['Present',presentDays],
+    ['Absent',totalWorkinDay-3-presentDays]
+  ]);
+  
+  const options = {
+    pieHole: 0.5,
+    chartArea: {width: 400, height: 300},
+    width: 500,
+    height: 400,
+    // legend: 'none',
+    slices: [{color: '#67ac00'}, {color: '#e03c3c'}]
+  }
+  
+  const chart = new google.visualization.PieChart(document.getElementById('myChart'));
+    chart.draw(data, options);
+  }
+ 
+  // console.log(studentIndex.length)
+  popupCover.appendChild(popup)
+  document.body.appendChild(popupCover)
+  let mx = document.querySelector(".mx")
+  mx.addEventListener("click", () => {document.body.removeChild(popupCover)})
 }
 function adataRender(__class__,f) {
   let sListHolder = document.querySelector(".tempura")

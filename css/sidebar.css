@@ -114,3 +114,76 @@ body {
 .tm {
     justify-content: flex-start;
 }
+.popUp-cover {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #516bff55;
+}
+.popUP {
+    width: 60%;
+    min-height: 100px;
+    max-height: auto;
+    padding: 2.5rem;
+    background-color: white;
+    display: flex;
+    border-radius: 30px;
+    flex-direction: column;
+}
+.hOne {
+    font-size: 6rem;
+    text-decoration: underline 4px solid;
+
+    color: black;
+}
+.titleUp {
+    font-size: 3.14159rem;
+    color: black;
+    /* text-decoration: underline 1px solid; */
+    display: inline;
+}
+.titleValue {
+    text-decoration: none;
+    display: inline;
+    color: #516bff;
+}
+.upNameHolder {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 50px;
+}
+.mx {
+    justify-self: right;
+    /* justify-self: left; */
+    font-size: 7rem;
+    user-select: none;
+    cursor: pointer;
+}
+.mStatsHolder {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 50px;
+}
+.statsHolder {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.nameHolder {
+    /* display: flex; */
+    flex-direction: column;
+    display: inline-flex;
+}
