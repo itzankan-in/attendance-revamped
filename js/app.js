@@ -16,7 +16,7 @@ let loaderSX = document.querySelector(".loader")
             if(k!=e) {
               k.classList.remove("selected")
               let sampleArr = Array.from(document.getElementsByClassName("selected"))
-              // console.log(sampleArr)
+              // //console.log(sampleArr)
               if(sampleArr.length == 0 || sampleArr[0] == icoArr[1]) {
                   icoArr[1].classList.add("selected")
 
@@ -84,10 +84,10 @@ ham.addEventListener("click",expand)
 
 let title = document.querySelector(".title")
 title.addEventListener("click", () => {
-  console.log(title.textContent)
+  // //console.log(title.textContent)
   if(title.textContent === "PM Shri Kendriya Vidyalaya Berhampore") {
     title.textContent = "पीएम श्री केन्द्रीय विद्यालय बरहामपुर"
-    // console.log("hi")
+    // //console.log("hi")
   } else {
     title.textContent = "PM Shri Kendriya Vidyalaya Berhampore"
   }
@@ -109,7 +109,7 @@ function home() {
   cPackage.innerHTML = charCode1
 }
 home();
-
+// main()
 let homeBtn = document.getElementById("home")
   let list = document.getElementById("slist")
   list.addEventListener("click",() => {cPackage.innerHTML=""})
@@ -207,9 +207,9 @@ function pdataRender(__class__,f) {
   sListHolder.innerHTML = ""
 
   loaderSX.style.display = 'none';
-  // console.log(e['data'].length)
+  // //console.log(e['data'].length)
   e["data"].forEach((f,index) => {
-    // console.log(f)
+    // //console.log(f)
    if(index<(e['data'].length - 3)) {
     let stuDentCard = document.createElement("div")
     stuDentCard.classList.add("profile-card")
@@ -238,7 +238,7 @@ f.innerHTML = __class__;
 
 }
 function popupRender(studentIndex,api,_class_) {
-  console.log(studentIndex, api , _class_)
+  //console.log(studentIndex, api , _class_)
   let popupCover = document.createElement("div")
   popupCover.classList.add("popUp-cover")
   let popup = document.createElement("div")
@@ -250,7 +250,7 @@ function popupRender(studentIndex,api,_class_) {
     if(studentIndex[i] == "P" || studentIndex[i] == "p") {
       presentDays+=1
     }
-    console.log(studentIndex[i])
+    //console.log(studentIndex[i])
   }
   let buffer = ''
   if(_class_.slice(-7).toUpperCase() === "SCIENCE") {
@@ -289,24 +289,47 @@ function popupRender(studentIndex,api,_class_) {
 
     </div>
     </div>
-    <div class="mainTable">
-      <div class="tr tr-0">
-                    <div class="th roll">Roll Number</div>
-                    <div class="th admn">Admission number</div>
-                    <div class="th name">Name</div>
-                </div> 
-    </div>
+    
   `
-  /* let tr0 = document.querySelector("tr0")
-  le ittrCount = 0;
-  for(k in studentIndex) {
-    ittrCount++
-    if(ittr>2) {
-      let thS = document.createElement("div")
-      thS.setAttributetgggbgb
+  // //console.log(tr0)
+  setTimeout(() => {
+    let upNameHolder = document.querySelector(".upNameHolder")
+    let mainTable = document.createElement("div")
+    mainTable.setAttribute("class", "mainTable mainTable-special mainTable-sep")
+    let tr0 = document.createElement("div")
+    tr0.setAttribute("class", "tr tr-0")
+    tr0.innerHTML = `<div class="th thp roll">Roll Number</div>
+                      <div class="th thp admn">Admission number</div>
+                      <div class="th thp name">Name</div>`
+    // mainTable.innerHTML = ``
+    mainTable.appendChild(tr0)
+    popup.appendChild(mainTable)
+    let ittrIndex = 0;
+    let tr = document.createElement("div")
+    tr.setAttribute("class","tr")
+    for(k in studentIndex) {
+      ittrIndex+=1 
+      if(ittrIndex>3) {
+        let thS = document.createElement("div")
+        thS.setAttribute("class","th th-special")
+        thS.innerHTML = [k]
+        tr0.appendChild(thS)
+        let tdS = document.createElement("div")
+        tdS.setAttribute("class","td0 td-special")
+        tdS.innerHTML = studentIndex[k]
+        tr.appendChild(tdS)
+        // //console.log(k)
+      } else {
+        let tdS = document.createElement("div")
+        tdS.setAttribute("class","td0 thp")
+        tdS.innerHTML = studentIndex[k]
+        tr.appendChild(tdS)
+      }
     }
-  }
-  */
+   mainTable.appendChild(tr)
+  }, 100);
+ 
+
 function drawChart() {
   const data = google.visualization.arrayToDataTable([
     ['Present', 'Percentage'],
@@ -316,8 +339,8 @@ function drawChart() {
   
   const options = {
     pieHole: 0.5,
-    chartArea: {width: 400, height: 300},
-    width: 500,
+    chartArea: {width: 500, height: 400},
+    width: 600,
     height: 400,
     // legend: 'none',
     slices: [{color: '#67ac00'}, {color: '#e03c3c'}]
@@ -327,11 +350,14 @@ function drawChart() {
     chart.draw(data, options);
   }
  
-  // console.log(studentIndex.length)
+  // //console.log(studentIndex.length)
   popupCover.appendChild(popup)
   document.body.appendChild(popupCover)
   let mx = document.querySelector(".mx")
-  mx.addEventListener("click", () => {document.body.removeChild(popupCover)})
+  mx.addEventListener("click", () => {document.body.removeChild(popupCover)
+    // ham.addEventListener("click", expand)
+   
+  })
 }
 function adataRender(__class__,f) {
   let sListHolder = document.querySelector(".tempura")
@@ -397,7 +423,11 @@ if(localApi != null) {
             td.innerHTML = e['data'][i][j]
           } else {
             td.setAttribute("class", `td td${i%2} td-special`)
-              td.innerHTML = e['data'][i][j] == 0 ? "A" : e['data'][i][j] === "A"? "A": 'P'; 
+              if(e['data'][i][j] == 0 || e['data'][i][j] == 1) {
+                td.innerHTML = e['data'][i][j]==0? "A" : "P"
+              } else {
+                td.innerHTML = e['data'][i][j];
+              }
            
             
           

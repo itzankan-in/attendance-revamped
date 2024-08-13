@@ -107,6 +107,7 @@ body {
 .sListHolder {
     width: 95%;
     height: auto;
+    /* overflow: scroll; */
     min-height: 3rem;
     background-color: white ;
     padding: 20px;
@@ -379,9 +380,15 @@ body {
 
 
 .mainTable-special {
-    overflow: scroll;
+    /* overflow: ; */
+    /* align-self: flex-start; */
+    /* justify-self: left; */
     overflow-y: scroll;
-    max-height: auto;
+    /* height: 50rem; */
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* transform: translateY(120%); */
     
 }
 .mainTable::-webkit-scrollbar {
@@ -391,5 +398,11 @@ body {
 .mainTable::-webkit-scrollbar-thumb {
     background-color: #516bff;
     border-radius: 10px;
-    border: 1px black solid;
+    /* border: 1px black solid; */
+}
+.thp {
+    min-width: 30rem;
+}
+.mainTable-sep {
+    overflow-y: hidden;
 }
